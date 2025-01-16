@@ -1,18 +1,18 @@
-import './App.css'
-import Navbar from './components/Navbar'
-import ToDo from './components/ToDo'
+import React from 'react'
+import { useState } from 'react'
 
-function App() {
+const Navbar = () => {
+    const [date, setDate] = useState(new Date())
 
-
-  return (
-    <>
-      <div className='container mx-auto my-16 bg-[#f25f4c] w-3/4 border-solid border-2 rounded-md border-[#0f0e17] shadow-xl selection:bg-[#e53170] selection:text-[#454242] min-h-[80vh]'>
-        <Navbar />
-        <ToDo />
-      </div>
-    </>
-  )
+    return (
+        <nav 
+        className='flex items-center flex-nowrap text-[#fffffe] border-b-solid border-b-2 rounded-sm border-[#0f0e17] bg-[#e53170]'>
+            <ul className='flex items-center w-full justify-between p-2'>
+                <li className='text-3xl font-bold'>TO-DAY</li>
+                <li className='text-2xl font-bold'>{date.toDateString()}</li>
+            </ul>
+        </nav>
+    )
 }
 
-export default App
+export default Navbar

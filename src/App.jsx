@@ -1,6 +1,6 @@
 import './App.css'
-import Navbar from './components/Navbar'
-import ToDo from './components/ToDo'
+import Navbar from './components/Navbar.jsx'
+import ToDo from './components/ToDo.jsx'
 
 function App() {
 
