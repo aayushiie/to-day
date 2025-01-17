@@ -4,7 +4,7 @@
 
 :root{
   font-family: monospace;
-  background-color: #d8dcdc;
+  background-color:	#05281c;
 }
 
 ::-webkit-scrollbar{
@@ -16,10 +16,10 @@
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: #454242;
+  background-color: #253a40;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover{
-  background-color: #454242;
+  background-color: #253a40;
 }

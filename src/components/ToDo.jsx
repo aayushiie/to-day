@@ -76,7 +76,7 @@ const AddToDo = () => {
 
   return (
     <>
-      <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg text-black">
+      <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg text-[#fffffe]">
         <h2 className="pb-2 pt-4 px-2 underline text-lg">Add your task</h2>
         <input
           onChange={handleChange}
@@ -87,11 +87,11 @@ const AddToDo = () => {
           }}
           value={todo}
           type="text"
-          className="bg-[#f25f4c] border-b-2 mx-2 pt-2 px-2 text-black border-[#0f0e17] w-auto focus:outline-none"
+          className="bg-[#4e6760] border-b-2 mx-2 pt-2 px-2 text-black border-[#0f0e17] w-auto focus:outline-none"
         />
         <button
           onClick={handleAdd}
-          className="bg-[#e53170] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-4 py-2 my-4 px-6 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+          className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-4 py-2 my-4 px-6 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
         >
           Add
         </button>
@@ -101,7 +101,7 @@ const AddToDo = () => {
         <h2 className="text-lg text-[#fffffe] mb-2 font-bold">Progress</h2>
         <div className="w-full bg-[#d8dcdc] h-4 rounded-[0.25rem] overflow-hidden">
           <div
-            className="bg-[#454242] h-[0.8rem] border-[1px] border-solid border-[#454242] m-[1px] rounded-[0.25rem] transition-[width] duration-[0.3s]"
+            className="bg-[#253a40] h-[0.8rem] border-[1px] border-solid border-[#253a40] m-[1px] rounded-[0.25rem] transition-[width] duration-[0.3s]"
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
@@ -125,7 +125,7 @@ const AddToDo = () => {
                   <div className="flex items-center">
                     <input
                       name={item.id}
-                      className="accent-[#e53170] w-5 h-5"
+                      className="accent-[#253a40] w-5 h-5"
                       onChange={handleCheckbox}
                       type="checkbox"
                       checked={item.isCompleted}
@@ -145,7 +145,7 @@ const AddToDo = () => {
                       onClick={(e) => {
                         handleEdit(e, item.id);
                       }}
-                      className="bg-[#e53170] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+                      className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
                     >
                       Edit
                     </button>
@@ -153,7 +153,7 @@ const AddToDo = () => {
                       onClick={(e) => {
                         handleDelete(e, item.id);
                       }}
-                      className="bg-[#e53170] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+                      className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
                     >
                       Delete
                     </button>
@@ -168,13 +168,13 @@ const AddToDo = () => {
       <div className="my-3 mx-6 p-4 flex flex-col sm:flex-row justify-between">
         <button
           onClick={handleCompletedTasks}
-          className="bg-[#e53170] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 my-2 sm:my-0 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+          className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 my-2 sm:my-0 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
         >
           View Completed
         </button>
         <button
           onClick={handleReset}
-          className="bg-[#e53170] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 my-2 sm:my-0 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+          className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 my-2 sm:my-0 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
         >
           Reset
         </button>
