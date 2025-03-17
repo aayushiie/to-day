@@ -6,6 +6,7 @@ const AddToDo = () => {
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState([])
   const [showFinished, setshowFinished] = useState(false)
+  const [ongoingTask, setOngoingTask] = useState(null);
 
   useEffect(() => {
     let todoString = localStorage.getItem('todos');
@@ -35,6 +36,11 @@ const AddToDo = () => {
     setTodos(newTodos);
     savetoLocalStorage();
   };
+
+  const handleOngoing = (id) => {
+    setOngoingTask(id);
+  };
+
 
   const handleDelete = (e, id) => {
     let newTodos = todos.filter((item) => {
@@ -68,8 +74,6 @@ const AddToDo = () => {
     savetoLocalStorage();
   };
 
-  
-
   const completedCount = todos.filter((item) => item.isCompleted).length;
   const progressPercentage =
     todos.length === 0 ? 0 : Math.round((completedCount / todos.length) * 100);
@@ -80,13 +84,13 @@ const AddToDo = () => {
         <h2 className="pb-2 pt-4 px-2 underline text-lg">Add your task</h2>
         <input
           onChange={handleChange}
+          value={todo}
+          type="text"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleAdd();
             }
           }}
-          value={todo}
-          type="text"
           className="bg-[#4e6760] border-b-2 mx-2 pt-2 px-2 text-black border-[#0f0e17] w-auto focus:outline-none"
         />
         <button
@@ -137,10 +141,21 @@ const AddToDo = () => {
                         ? "line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                         : "border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                     }
+                    style={{ 
+                      color: ongoingTask === item.id ? '#f4a261' : '#fffffe',
+                      fontWeight: ongoingTask === item.id ? 'bold' : 'normal'
+                    }}
                   >
                     {item.todo}
                   </div>
+
                   <div className="buttons my-2 flex">
+                    <button
+                      onClick={() => handleOngoing(item.id)}
+                      className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
+                    >
+                      Ongoing
+                    </button>
                     <button
                       onClick={(e) => {
                         handleEdit(e, item.id);
