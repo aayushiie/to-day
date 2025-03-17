@@ -80,26 +80,24 @@ const AddToDo = () => {
 
   return (
     <>
-      <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg text-[#fffffe]">
+      <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg text-[#fffffe] p-4">
         <h2 className="pb-2 pt-4 px-2 underline text-lg">Add your task</h2>
-        <input
-          onChange={handleChange}
-          value={todo}
-          type="text"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleAdd();
-            }
-          }}
-          className="bg-[#4e6760] border-b-2 mx-2 pt-2 px-2 text-black border-[#0f0e17] w-auto focus:outline-none"
-        />
-        <button
-          onClick={handleAdd}
-          className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-4 py-2 my-4 px-6 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
-        >
-          Add
-        </button>
+        <div className="add-task-container">
+          <input
+            onChange={handleChange}
+            value={todo}
+            type="text"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleAdd();
+            }}
+            className="task-input"
+          />
+          <button onClick={handleAdd} className="add-btn">
+            Add
+          </button>
+        </div>
       </div>
+
 
       <div className="my-3 mx-6 p-4">
         <h2 className="text-lg text-[#fffffe] mb-2 font-bold">Progress</h2>
@@ -141,7 +139,7 @@ const AddToDo = () => {
                         ? "line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                         : "border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                     }
-                    style={{ 
+                    style={{
                       color: ongoingTask === item.id ? '#f4a261' : '#fffffe',
                       fontWeight: ongoingTask === item.id ? 'bold' : 'normal'
                     }}
