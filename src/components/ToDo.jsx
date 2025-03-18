@@ -39,6 +39,7 @@ const AddToDo = () => {
 
   const handleOngoing = (id) => {
     setOngoingTask(id);
+    savetoLocalStorage();
   };
 
 
