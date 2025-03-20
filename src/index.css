@@ -69,17 +69,16 @@
 
 .add-task-container {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  flex-wrap: wrap; 
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  gap: 10px; /* Adds spacing between elements */
+  gap: 10px; 
 }
 
-/* Ensure input adjusts properly */
 .task-input {
-  flex: 1; /* Takes available space */
-  min-width: 0; /* Prevents overflow */
+  flex: 1; 
+  min-width: 0; 
   padding: 10px;
   font-size: 16px;
   border: 2px solid #0f0e17;
@@ -88,7 +87,6 @@
   outline: none;
 }
 
-/* Responsive Button */
 .add-btn {
   white-space: nowrap; 
   padding: 12px 16px; 
@@ -106,19 +104,18 @@
   box-shadow: 0 0 10px #fffffe;
 }
 
-/* 📱 Mobile Responsive */
 @media (max-width: 600px) {
   .add-task-container {
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column; 
     align-items: stretch;
   }
 
   .task-input {
-    width: 100%; /* Full width */
+    width: 100%; 
   }
 
   .add-btn {
-    width: 100%; /* Button stretches across screen */
+    width: 100%; 
     text-align: center;
   }
 }
