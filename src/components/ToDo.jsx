@@ -153,7 +153,7 @@ const AddToDo = () => {
                       onClick={(e) => {
                         handleEdit(e, item.id);
                       }}
-                      className="add-btn"
+                      className="add-btn mx-2"
                     >
                       Edit
                     </button>
@@ -161,7 +161,7 @@ const AddToDo = () => {
                       onClick={(e) => {
                         handleDelete(e, item.id);
                       }}
-                      className="add-btn"
+                      className="add-btn mx-2"
                     >
                       Delete
                     </button>
@@ -176,13 +176,13 @@ const AddToDo = () => {
       <div className="my-3 mx-6 p-4 flex flex-col sm:flex-row justify-between">
         <button
           onClick={handleCompletedTasks}
-          className="add-btn"
+          className="add-btn mx-2"
         >
           View Completed
         </button>
         <button
           onClick={handleReset}
-          className="add-btn"
+          className="add-btn mx-2"
         >
           Reset
         </button>
