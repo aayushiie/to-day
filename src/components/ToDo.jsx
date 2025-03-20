@@ -37,10 +37,10 @@ const AddToDo = () => {
     savetoLocalStorage();
   };
 
-  const handleOngoing = (id) => {
-    setOngoingTask(id);
-    savetoLocalStorage();
-  };
+  // const handleOngoing = (id) => {
+  //   setOngoingTask(id);
+  //   savetoLocalStorage();
+  // };
 
 
   const handleDelete = (e, id) => {
@@ -149,12 +149,6 @@ const AddToDo = () => {
                   </div>
 
                   <div className="buttons my-2 flex">
-                    <button
-                      onClick={() => handleOngoing(item.id)}
-                      className="bg-[#253a40] text-[#fffffe] border-2 rounded-lg border-[#0f0e17] shadow-md mx-2 py-1 px-4 font-bold hover:shadow-[#fffffe] hover:shadow-2xl hover:transition-shadow"
-                    >
-                      Ongoing
-                    </button>
                     <button
                       onClick={(e) => {
                         handleEdit(e, item.id);
