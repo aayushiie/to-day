@@ -89,7 +89,7 @@
 }
 
 /* Responsive Button */
-.opr-btn {
+.add-btn {
   white-space: nowrap; 
   padding: 12px 16px; 
   font-size: 16px;
@@ -102,7 +102,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.opr-btn:hover {
+.add-btn:hover {
   box-shadow: 0 0 10px #fffffe;
 }
 
