@@ -88,10 +88,10 @@
   outline: none;
 }
 
-/* Responsive Add Button */
-.add-btn {
-  white-space: nowrap; /* Prevents text wrapping */
-  padding: 12px 16px; /* Adjusts padding for better fit */
+/* Responsive Button */
+.opr-btn {
+  white-space: nowrap; 
+  padding: 12px 16px; 
   font-size: 16px;
   border: 2px solid #0f0e17;
   background-color: #253a40;
@@ -102,7 +102,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.add-btn:hover {
+.opr-btn:hover {
   box-shadow: 0 0 10px #fffffe;
 }
 
