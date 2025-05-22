@@ -6,7 +6,6 @@ const AddToDo = () => {
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState([])
   const [showFinished, setshowFinished] = useState(false)
-  const [ongoingTask, setOngoingTask] = useState(null);
 
   useEffect(() => {
     let todoString = localStorage.getItem('todos');
@@ -36,12 +35,6 @@ const AddToDo = () => {
     setTodos(newTodos);
     savetoLocalStorage();
   };
-
-  // const handleOngoing = (id) => {
-  //   setOngoingTask(id);
-  //   savetoLocalStorage();
-  // };
-
 
   const handleDelete = (e, id) => {
     let newTodos = todos.filter((item) => {
@@ -140,10 +133,6 @@ const AddToDo = () => {
                         ? "line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                         : "border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
                     }
-                    style={{
-                      color: ongoingTask === item.id ? '#f4a261' : '#fffffe',
-                      fontWeight: ongoingTask === item.id ? 'bold' : 'normal'
-                    }}
                   >
                     {item.todo}
                   </div>
