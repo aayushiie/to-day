@@ -1,48 +1,43 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
+import { Reorder } from 'framer-motion';
 
 const AddToDo = () => {
-  const [todo, setTodo] = useState('')
-  const [todos, setTodos] = useState([])
-  const [showFinished, setshowFinished] = useState(false)
+  const [todo, setTodo] = useState('');
+  const [todos, setTodos] = useState([]);
+  const [showFinished, setshowFinished] = useState(false);
 
   useEffect(() => {
-    let todoString = localStorage.getItem('todos');
+    const todoString = localStorage.getItem('todos');
     if (todoString) {
-      let todos = JSON.parse(localStorage.getItem('todos'));
-      setTodos(todos);
+      setTodos(JSON.parse(todoString));
     }
   }, []);
 
-  const savetoLocalStorage = () => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+  const savetoLocalStorage = (updatedTodos) => {
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
   };
 
   const handleAdd = () => {
     if (todo.trim() === '') return;
-    setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }]);
+    const newTodos = [...todos, { id: uuidv4(), todo, isCompleted: false }];
+    setTodos(newTodos);
     setTodo('');
-    savetoLocalStorage();
+    savetoLocalStorage(newTodos);
   };
 
   const handleEdit = (e, id) => {
-    let t = todos.filter((item) => item.id === id);
-    setTodo(t[0].todo);
-    let newTodos = todos.filter((item) => {
-      return item.id !== id;
-    });
+    const t = todos.find((item) => item.id === id);
+    setTodo(t.todo);
+    const newTodos = todos.filter((item) => item.id !== id);
     setTodos(newTodos);
-    savetoLocalStorage();
+    savetoLocalStorage(newTodos);
   };
 
   const handleDelete = (e, id) => {
-    let newTodos = todos.filter((item) => {
-      return item.id !== id;
-    });
+    const newTodos = todos.filter((item) => item.id !== id);
     setTodos(newTodos);
-    savetoLocalStorage();
+    savetoLocalStorage(newTodos);
   };
 
   const handleChange = (e) => {
@@ -50,23 +45,21 @@ const AddToDo = () => {
   };
 
   const handleCheckbox = (e) => {
-    let id = e.target.name;
-    let index = todos.findIndex((item) => {
-      return item.id === id;
-    });
-    let newTodos = [...todos];
+    const id = e.target.name;
+    const index = todos.findIndex((item) => item.id === id);
+    const newTodos = [...todos];
     newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
-    savetoLocalStorage();
+    savetoLocalStorage(newTodos);
   };
 
-  const handleCompletedTasks = (e) => {
+  const handleCompletedTasks = () => {
     setshowFinished(!showFinished);
   };
 
   const handleReset = () => {
     setTodos([]);
-    savetoLocalStorage();
+    savetoLocalStorage([]);
   };
 
   const completedCount = todos.filter((item) => item.isCompleted).length;
@@ -83,7 +76,7 @@ const AddToDo = () => {
             value={todo}
             type="text"
             onKeyDown={(e) => {
-              if (e.key === "Enter") handleAdd();
+              if (e.key === 'Enter') handleAdd();
             }}
             className="task-input"
           />
@@ -91,8 +84,8 @@ const AddToDo = () => {
             <lord-icon
               src="https://cdn.lordicon.com/gzqofmcx.json"
               trigger="hover"
-              colors="primary:#ffffff">
-            </lord-icon>
+              colors="primary:#ffffff"
+            ></lord-icon>
           </button>
         </div>
       </div>
@@ -105,9 +98,7 @@ const AddToDo = () => {
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
-        <p className="text-sm text-[#fffffe] mt-1">
-          {progressPercentage}% completed
-        </p>
+        <p className="text-sm text-[#fffffe] mt-1">{progressPercentage}% completed</p>
       </div>
 
       <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg">
@@ -115,11 +106,13 @@ const AddToDo = () => {
         <div className="flex flex-col sm:flex-wrap">
           {todos.length === 0 && <div className="px-5 py-2">You have no tasks.</div>}
 
-          {todos.map((item) => {
-            return (
-              (showFinished || !item.isCompleted) && (
-                <div
+          <Reorder.Group axis="y" onReorder={setTodos} values={todos}>
+            {todos
+              .filter((item) => showFinished || !item.isCompleted)
+              .map((item) => (
+                <Reorder.Item
                   key={item.id}
+                  value={item}
                   className="flex flex-col sm:flex-row px-4 my-2 items-start sm:items-end text-lg w-full sm:justify-between"
                 >
                   <div className="flex items-center">
@@ -134,56 +127,51 @@ const AddToDo = () => {
                   <div
                     className={
                       item.isCompleted
-                        ? "line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
-                        : "border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0"
+                        ? 'line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0'
+                        : 'border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0'
                     }
                   >
                     {item.todo}
                   </div>
-
                   <div className="buttons my-2 flex">
                     <button
-                      onClick={(e) => {
-                        handleEdit(e, item.id);
-                      }}
+                      onClick={(e) => handleEdit(e, item.id)}
                       className="add-btn mx-2 flex justify-center items-center"
                     >
                       <lord-icon
                         src="https://cdn.lordicon.com/mudwpdhy.json"
                         trigger="hover"
-                        colors="primary:#ffffff">
-                      </lord-icon>
+                        colors="primary:#ffffff"
+                      ></lord-icon>
                     </button>
                     <button
-                      onClick={(e) => {
-                        handleDelete(e, item.id);
-                      }}
+                      onClick={(e) => handleDelete(e, item.id)}
                       className="add-btn mx-2 flex justify-center items-center"
                     >
                       <lord-icon
                         src="https://cdn.lordicon.com/oqeixref.json"
                         trigger="hover"
-                        colors="primary:#ffffff">
-                      </lord-icon>
+                        colors="primary:#ffffff"
+                      ></lord-icon>
                     </button>
                   </div>
-                </div>
-              )
-            );
-          })}
+                </Reorder.Item>
+              ))}
+          </Reorder.Group>
         </div>
       </div>
 
       <div className="my-3 mx-6 p-4 flex flex-col sm:flex-row justify-between">
         <button
           onClick={handleCompletedTasks}
-          className="add-btn mx-2 flex justify-center items-center gap-2">
+          className="add-btn mx-2 flex justify-center items-center gap-2"
+        >
           View Completed
           <lord-icon
             src="https://cdn.lordicon.com/rxgzsafd.json"
             trigger="hover"
-            colors="primary:#ffffff">
-          </lord-icon>
+            colors="primary:#ffffff"
+          ></lord-icon>
         </button>
         <button
           onClick={handleReset}
@@ -193,12 +181,12 @@ const AddToDo = () => {
           <lord-icon
             src="https://cdn.lordicon.com/ibjcmcbv.json"
             trigger="hover"
-            colors="primary:#ffffff">
-          </lord-icon>
+            colors="primary:#ffffff"
+          ></lord-icon>
         </button>
       </div>
     </>
   );
 };
 
-export default AddToDo
+export default AddToDo;
