@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import ToDo from './components/ToDo.jsx'
-import Login from './components/Login.jsx'
+// import Login from './components/Login.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 function App() {
@@ -8,11 +8,11 @@ function App() {
     {
       path: '/',
       element: <><Navbar/><ToDo/></>
-    },
-    {
-      path: '/login',
-      element: <><Login/></>
     }
+    // {
+    //   path: '/login',
+    //   element: <><Login/></>
+    // }
   ])
 
   return (

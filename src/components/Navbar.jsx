@@ -7,11 +7,11 @@ const Navbar = () => {
 
     return (
         <>
-            <Link to={'/login'}>
+            {/* <Link to={'/login'}>
                 <button className="mx-2">
                     Login
                 </button>
-            </Link>
+            </Link> */}
             <nav
                 className='flex items-center flex-nowrap text-[#fffffe] border-b-solid border-b-2 rounded-sm border-[#0f0e17] bg-[#05281c]'>
                 <ul className='flex items-center w-full justify-between p-2'>
