@@ -115,6 +115,7 @@ const AddToDo = () => {
                   value={item}
                   className="flex flex-col sm:flex-row px-4 my-2 items-start sm:items-end text-lg w-full sm:justify-between"
                 >
+                  <div className='flex items-center justify-between border w-full rounded-lg px-2 py-2 bg-white shadow-[0px 0px 0px rgba(0,0,0,0.8)] sm:flex-row'>
                   <div className="flex items-center">
                     <input
                       name={item.id}
@@ -127,8 +128,8 @@ const AddToDo = () => {
                   <div
                     className={
                       item.isCompleted
-                        ? 'line-through border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0'
-                        : 'border-b-[1.5px] border-[#0f0e17] w-full mx-2 text-[#fffffe] mt-2 sm:mt-0'
+                        ? 'line-through w-full mx-2 text-black sm:mt-0 text-xl'
+                        : 'w-full mx-2 text-black sm:mt-0 text-xl'
                     }
                   >
                     {item.todo}
@@ -136,7 +137,7 @@ const AddToDo = () => {
                   <div className="buttons my-2 flex">
                     <button
                       onClick={(e) => handleEdit(e, item.id)}
-                      className="add-btn mx-2 flex justify-center items-center"
+                      className="add-btn mx-2 flex justify-center items-center todo-btn"
                     >
                       <lord-icon
                         src="https://cdn.lordicon.com/mudwpdhy.json"
@@ -146,7 +147,7 @@ const AddToDo = () => {
                     </button>
                     <button
                       onClick={(e) => handleDelete(e, item.id)}
-                      className="add-btn mx-2 flex justify-center items-center"
+                      className="add-btn mx-2 flex justify-center items-center todo-btn"
                     >
                       <lord-icon
                         src="https://cdn.lordicon.com/oqeixref.json"
@@ -154,6 +155,7 @@ const AddToDo = () => {
                         colors="primary:#ffffff"
                       ></lord-icon>
                     </button>
+                  </div>
                   </div>
                 </Reorder.Item>
               ))}
