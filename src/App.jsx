@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <div className='container mx-auto my-16 bg-[#4e6760] w-3/4 border-solid border-2 rounded-md border-[#0f0e17] shadow-xl selection:bg-[#be9d63] selection:text-[#454242] min-h-[80vh]'>
+      <div className='container mx-auto my-16 bg-[#0f0f0f] w-3/4 border-solid border-2 rounded-md border-[#05281c] shadow-xl selection:bg-green-400 selection:text-[#454242] min-h-[80vh]'>
         <RouterProvider router={router}/>
       </div>
     </>
