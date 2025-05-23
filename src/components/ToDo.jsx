@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 
 const AddToDo = () => {
   const [todo, setTodo] = useState('')
@@ -86,12 +87,15 @@ const AddToDo = () => {
             }}
             className="task-input"
           />
-          <button onClick={handleAdd} className="add-btn">
-            Add
+          <button onClick={handleAdd} className="add-btn flex items-center justify-center">
+            <lord-icon
+              src="https://cdn.lordicon.com/gzqofmcx.json"
+              trigger="hover"
+              colors="primary:#ffffff">
+            </lord-icon>
           </button>
         </div>
       </div>
-
 
       <div className="my-3 mx-6 p-4">
         <h2 className="text-lg text-[#fffffe] mb-2 font-bold">Progress</h2>
@@ -142,17 +146,25 @@ const AddToDo = () => {
                       onClick={(e) => {
                         handleEdit(e, item.id);
                       }}
-                      className="add-btn mx-2"
+                      className="add-btn mx-2 flex justify-center items-center"
                     >
-                      Edit
+                      <lord-icon
+                        src="https://cdn.lordicon.com/mudwpdhy.json"
+                        trigger="hover"
+                        colors="primary:#ffffff">
+                      </lord-icon>
                     </button>
                     <button
                       onClick={(e) => {
                         handleDelete(e, item.id);
                       }}
-                      className="add-btn mx-2"
+                      className="add-btn mx-2 flex justify-center items-center"
                     >
-                      Delete
+                      <lord-icon
+                        src="https://cdn.lordicon.com/oqeixref.json"
+                        trigger="hover"
+                        colors="primary:#ffffff">
+                      </lord-icon>
                     </button>
                   </div>
                 </div>
@@ -165,15 +177,24 @@ const AddToDo = () => {
       <div className="my-3 mx-6 p-4 flex flex-col sm:flex-row justify-between">
         <button
           onClick={handleCompletedTasks}
-          className="add-btn mx-2"
-        >
+          className="add-btn mx-2 flex justify-center items-center gap-2">
           View Completed
+          <lord-icon
+            src="https://cdn.lordicon.com/rxgzsafd.json"
+            trigger="hover"
+            colors="primary:#ffffff">
+          </lord-icon>
         </button>
         <button
           onClick={handleReset}
-          className="add-btn mx-2"
+          className="add-btn mx-2 flex justify-center items-center gap-2"
         >
           Reset
+          <lord-icon
+            src="https://cdn.lordicon.com/ibjcmcbv.json"
+            trigger="hover"
+            colors="primary:#ffffff">
+          </lord-icon>
         </button>
       </div>
     </>
