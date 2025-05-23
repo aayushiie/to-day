@@ -104,7 +104,7 @@ const AddToDo = () => {
       <div className="border-solid border-2 rounded-md border-[#0f0e17] my-3 mx-6 shadow-lg">
         <h2 className="text-2xl text-[#fffffe] px-2 font-bold py-2">Tasks</h2>
         <div className="flex flex-col sm:flex-wrap">
-          {todos.length === 0 && <div className="px-5 py-2">You have no tasks.</div>}
+          {todos.length === 0 && <div className="px-5 py-2 text-white">You have no tasks.</div>}
 
           <Reorder.Group axis="y" onReorder={setTodos} values={todos}>
             {todos
