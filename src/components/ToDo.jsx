@@ -117,7 +117,6 @@ const AddToDo = () => {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between border w-full rounded-lg px-2 py-3 bg-white shadow-md gap-3">
                     
-                    {/* Checkbox + Text */}
                     <div className="flex items-start sm:items-center w-full">
                       <input
                         name={item.id}
@@ -140,7 +139,6 @@ const AddToDo = () => {
                       </div>
                     </div>
 
-                    {/* Buttons */}
                     <div className="flex gap-3 justify-end sm:justify-center items-center flex-shrink-0">
                       <button
                         onClick={(e) => handleEdit(e, item.id)}
