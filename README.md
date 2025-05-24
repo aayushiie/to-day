@@ -10,16 +10,16 @@ To use the app, visit: [ToDay](https://to-day-progress.netlify.app/)
 ## Development
 
 * Clone the repo:
-```git
+```github
 $ git clone https://github.com/aayushiie/to-day.git
 ```
 
 * Go to project directory and install dependencies
-```git
+```github
 $ cd to-day && npm install
 ```
 
 * To run the app on local host
-```git
+```github
 $ npm run dev
 ```
