@@ -106,7 +106,11 @@ const AddToDo = () => {
         <div className="flex flex-col sm:flex-wrap">
           {todos.length === 0 && <div className="px-5 py-2 text-white">You have no tasks.</div>}
 
-          <Reorder.Group axis="y" onReorder={setTodos} values={todos}>
+          <Reorder.Group axis="y" values={todos}
+            onReorder={(newOrder) => {
+              setTodos(newOrder)
+              savetoLocalStorage(newOrder)
+            }}>
             {todos
               .filter((item) => showFinished || !item.isCompleted)
               .map((item) => (
@@ -116,7 +120,7 @@ const AddToDo = () => {
                   className="flex px-4 my-2 text-lg w-full"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between border w-full rounded-lg px-2 py-3 bg-white shadow-md gap-3">
-                    
+
                     <div className="flex items-start sm:items-center w-full">
                       <input
                         name={item.id}
@@ -126,9 +130,8 @@ const AddToDo = () => {
                         checked={item.isCompleted}
                       />
                       <div
-                        className={`ml-3 text-black text-base sm:text-lg ${
-                          item.isCompleted ? 'line-through' : ''
-                        } break-words`}
+                        className={`ml-3 text-black text-base sm:text-lg ${item.isCompleted ? 'line-through' : ''
+                          } break-words`}
                         style={{
                           wordBreak: 'break-word',
                           overflowWrap: 'break-word',
